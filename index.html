@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Game</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="favicon.ico">
+</head>
+
+<body style="background-color:rgb(255, 251, 212);">
+    <h1 id="CUR_KEY" style="font-size:6vw;"></h1>
+    <p style="font-size:3vw;">Press the key above!</p>
+    <p id="helper" style="font-size:3vw;"></p>
+</body>
+
+<script>
+    function get_next() {
+        const items = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+        const randomItem = items[Math.floor(Math.random() * items.length)];
+        document.getElementById("CUR_KEY").innerHTML = (randomItem.toString().toUpperCase() + "<br>");
+        return randomItem;
+    }
+</script>
+
+<script>
+    current_char = get_next()
+    document.addEventListener("keydown", function (event) {
+        if (event.key === current_char) {
+            document.getElementById("helper").innerHTML = ("" + "<br>");
+            const audio = new Audio("./YIPPEE.wav");
+            audio.addEventListener("ended", function () {
+                get_next();
+                current_char = get_next();
+            });
+            audio.play();
+                // get_next();
+                // current_char = get_next();
+        }
+        else {
+            document.getElementById("helper").innerHTML = ("Not quite, try again!" + "<br>");
+        }
+    });
+</script>
+
+</html>
