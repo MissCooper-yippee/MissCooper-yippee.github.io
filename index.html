@@ -32,7 +32,6 @@
     current_char = get_next()
     document.addEventListener("keydown", function (event) {
         if (event.key === current_char) {
-            document.getElementById("helper").innerHTML = ("" + "<br>");
             const audio = new Audio("./YIPPEE.wav");
             audio.addEventListener("ended", function () {
                 get_next();
